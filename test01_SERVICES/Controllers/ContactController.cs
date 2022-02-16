@@ -29,7 +29,7 @@ namespace test01_SERVICES.Controllers
             List<Contact> contacts = new();
             try
             {
-                contacts = await _context.Contacts.ToListAsync();
+                contacts = await _context.Contacts.Where(c => c.Disabled == false).ToListAsync();
                 response.success = true;
             }
             catch (Exception ex)

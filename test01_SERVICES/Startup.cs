@@ -33,6 +33,10 @@ namespace test01_SERVICES
 
             services.AddControllers();
 
+            // to avoid the format propierties wthe the controller return the response
+            services.AddControllers()
+               .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             //now, i creating a scope with the dbLibraryContext
             services.AddScoped<test01Context, test01Context>();
         }
@@ -47,8 +51,8 @@ namespace test01_SERVICES
 
             app.UseRouting();
 
-            app.UseCors(x => 
-                x.AllowAnyOrigin()
+            app.UseCors(x =>
+                x.AllowAnyOrigin().AllowAnyMethod()
             );
 
             app.UseAuthorization();
