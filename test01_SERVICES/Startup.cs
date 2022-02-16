@@ -52,7 +52,7 @@ namespace test01_SERVICES
             app.UseRouting();
 
             app.UseCors(x =>
-                x.AllowAnyOrigin().AllowAnyMethod()
+                x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
             );
 
             app.UseAuthorization();
